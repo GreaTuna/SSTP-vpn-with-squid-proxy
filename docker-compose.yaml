@@ -1,0 +1,15 @@
+services:
+  sstp_vpn:
+    image: sstp-proxy
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/ppp
+    ports:
+      - "80:443"
+    volumes:
+      - ./logs/vpn:/var/log/vpn
+      - ./logs/squid:/var/log/squid
+      - ./src/squid.conf:/etc/squid/squid.conf
+      - ./src/sstp_start.sh:/home/scripts./sstp_starter.sh
+    command: ["/home/scripts./sstp_starter.sh"]
