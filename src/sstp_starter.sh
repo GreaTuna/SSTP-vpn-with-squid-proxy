@@ -1,9 +1,5 @@
 #!/bin/bash
 
-SSTP_SERVER="server"
-USERNAME="username"
-PASSWORD="password"
-
 touch /var/log/vpn/sstp.log
 sstpc --user "$USERNAME" --password "$PASSWORD" --tls-ext "$SSTP_SERVER" \
       noauth nodefaultroute usepeerdns\
